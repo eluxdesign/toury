@@ -28,6 +28,5 @@ export const signup = async (name, email, password, passwordConfirm) => {
         if (err.response.data.message.startsWith('E11000')) {
             return showAlert('error', 'This user already exists. If you forgot your password click "Forgot Password');
         }
-        return showAlert('error', 'Something went wrong. Please try later again.');
     }
 };

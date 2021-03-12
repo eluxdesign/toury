@@ -8580,9 +8580,9 @@ function () {
             _context.t0 = _context["catch"](0);
             console.log(_context.t0.response);
             document.getElementById('signup-btn').textContent = 'Register';
-            errorMessage = _context.t0.response.data.message;
+            errorMessage = _context.t0.response.data.message.toLowerCase();
 
-            if (errorMessage.startsWith('User validation failed') || errorMessage.startsWith('Invalid input data')) {
+            if (errorMessage.startsWith('user validation failed') || errorMessage.startsWith('invalid input data')) {
               (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.');
             } else {
               (0, _alerts.showAlert)('error', 'Error During Registration');

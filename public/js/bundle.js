@@ -8572,7 +8572,7 @@ function () {
               }, 1500);
             }
 
-            _context.next = 16;
+            _context.next = 15;
             break;
 
           case 8:
@@ -8596,9 +8596,6 @@ function () {
             return _context.abrupt("return", (0, _alerts.showAlert)('error', 'This user already exists. If you forgot your password click "Forgot Password'));
 
           case 15:
-            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'Something went wrong. Please try later again.'));
-
-          case 16:
           case "end":
             return _context.stop();
         }

@@ -22,10 +22,11 @@ export const signup = async (name, email, password, passwordConfirm) => {
         //}
     } catch(err) {
         if (err.response.data.message.startsWith('User validation failed')) {
-            showAlert('error', 'Passwords are not the same. Please try again.');
+            return showAlert('error', 'Passwords are not the same. Please try again.');
         }
         if (err.response.data.message.startsWith('E11000')) {
-            showAlert('error', 'This user already exists. If you forgot your password click "Forgot Password');
+            return showAlert('error', 'This user already exists. If you forgot your password click "Forgot Password');
         }
+        showAlert('error', err.response.data.message);
     }
 };

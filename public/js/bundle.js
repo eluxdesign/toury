@@ -8570,22 +8570,32 @@ function () {
               location.assign('/me');
             }, 1500); //}
 
-            _context.next = 13;
+            _context.next = 16;
             break;
 
           case 9:
             _context.prev = 9;
             _context.t0 = _context["catch"](0);
 
-            if (_context.t0.response.data.message.startsWith('User validation failed')) {
-              (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.');
+            if (!_context.t0.response.data.message.startsWith('User validation failed')) {
+              _context.next = 13;
+              break;
             }
 
-            if (_context.t0.response.data.message.startsWith('E11000')) {
-              (0, _alerts.showAlert)('error', 'This user already exists. If you forgot your password click "Forgot Password');
-            }
+            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.'));
 
           case 13:
+            if (!_context.t0.response.data.message.startsWith('E11000')) {
+              _context.next = 15;
+              break;
+            }
+
+            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'This user already exists. If you forgot your password click "Forgot Password'));
+
+          case 15:
+            (0, _alerts.showAlert)('error', _context.t0.response.data.message);
+
+          case 16:
           case "end":
             return _context.stop();
         }
@@ -9020,7 +9030,6 @@ if (signupForm) {
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;
     var passwordConfirm = document.getElementById('passwordConfirm').value;
-    console.log(name, email, password, passwordConfirm);
     (0, _signup.signup)(name, email, password, passwordConfirm);
   });
 }

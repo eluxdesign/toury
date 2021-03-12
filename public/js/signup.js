@@ -14,19 +14,20 @@ export const signup = async (name, email, password, passwordConfirm) => {
             }
         });
         console.log(res);
-        //if (res.data.status === 'success') {
+        if (res.data.status === 'success') {
             showAlert('success', 'Signed up successfuly');
             window.setTimeout(() => {
                 location.assign('/me')
             }, 1500);
-        //}
+        }
     } catch(err) {
+        document.getElementById('signup-btn').textContent = 'Register';
         if (err.response.data.message.startsWith('User validation failed')) {
             return showAlert('error', 'Passwords are not the same. Please try again.');
         }
         if (err.response.data.message.startsWith('E11000')) {
             return showAlert('error', 'This user already exists. If you forgot your password click "Forgot Password');
         }
-        showAlert('error', err.response.data.message);
+        return showAlert('error', 'Something went wrong. Please try later again.');
     }
 };

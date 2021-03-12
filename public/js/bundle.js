@@ -8563,19 +8563,22 @@ function () {
 
           case 3:
             res = _context.sent;
-            console.log(res); //if (res.data.status === 'success') {
+            console.log(res);
 
-            (0, _alerts.showAlert)('success', 'Signed up successfuly');
-            window.setTimeout(function () {
-              location.assign('/me');
-            }, 1500); //}
+            if (res.data.status === 'success') {
+              (0, _alerts.showAlert)('success', 'Signed up successfuly');
+              window.setTimeout(function () {
+                location.assign('/me');
+              }, 1500);
+            }
 
             _context.next = 16;
             break;
 
-          case 9:
-            _context.prev = 9;
+          case 8:
+            _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            document.getElementById('signup-btn').textContent = 'Register';
 
             if (!_context.t0.response.data.message.startsWith('User validation failed')) {
               _context.next = 13;
@@ -8593,14 +8596,14 @@ function () {
             return _context.abrupt("return", (0, _alerts.showAlert)('error', 'This user already exists. If you forgot your password click "Forgot Password'));
 
           case 15:
-            (0, _alerts.showAlert)('error', _context.t0.response.data.message);
+            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'Something went wrong. Please try later again.'));
 
           case 16:
           case "end":
             return _context.stop();
         }
       }
-    }, _callee, null, [[0, 9]]);
+    }, _callee, null, [[0, 8]]);
   }));
 
   return function signup(_x, _x2, _x3, _x4) {
@@ -9016,7 +9019,8 @@ var logoutBtn = document.querySelector('.nav__el--logout');
 var userDataForm = document.querySelector('.form-user-data');
 var userPasswordForm = document.querySelector('.form-user-password');
 var bookBtn = document.getElementById('book-tour');
-var signupForm = document.querySelector('.form--signup'); // DELEGATION
+var signupForm = document.querySelector('.form--signup');
+var signupBtn = document.getElementById('signup-btn'); // DELEGATION
 
 if (mapBox) {
   var locations = JSON.parse(mapBox.dataset.locations);
@@ -9026,6 +9030,7 @@ if (mapBox) {
 if (signupForm) {
   signupForm.addEventListener('submit', function (e) {
     e.preventDefault();
+    signupBtn.textContent = 'Processing....';
     var name = document.getElementById('name').value;
     var email = document.getElementById('email').value;
     var password = document.getElementById('password').value;

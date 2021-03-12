@@ -8572,12 +8572,13 @@ function () {
               }, 1500);
             }
 
-            _context.next = 13;
+            _context.next = 14;
             break;
 
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0.response);
             document.getElementById('signup-btn').textContent = 'Register';
             errorMessage = _context.t0.response.data.message.toLowerCase();
 
@@ -8587,7 +8588,7 @@ function () {
               (0, _alerts.showAlert)('error', 'Error During Registration');
             }
 
-          case 13:
+          case 14:
           case "end":
             return _context.stop();
         }

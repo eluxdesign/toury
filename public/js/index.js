@@ -14,6 +14,7 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password')
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.form--signup');
+const signupBtn = document.getElementById('signup-btn');
 
 // DELEGATION
 if (mapBox) {
@@ -24,6 +25,7 @@ if (mapBox) {
 if (signupForm) {
   signupForm.addEventListener('submit', e => {
       e.preventDefault();
+      signupBtn.textContent = 'Processing....';
       const name = document.getElementById('name').value;
       const email = document.getElementById('email').value;
       const password = document.getElementById('password').value;

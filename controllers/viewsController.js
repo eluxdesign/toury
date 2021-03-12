@@ -99,3 +99,15 @@ exports.getTour = catchAsync(async (req, res, next) => {
       user: updatedUser
     });
   });
+
+  exports.getSignupForm = (req, res, next) => {
+    res
+      .status(200)
+      .set(
+        'Content-Security-Policy',
+        "connect-src 'self' https://cdnjs.cloudflare.com"
+      )
+      .render('signup', {
+        title: 'User Signup'
+      });
+  };

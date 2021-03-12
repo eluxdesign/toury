@@ -8543,7 +8543,7 @@ function () {
   var _ref = _asyncToGenerator(
   /*#__PURE__*/
   regeneratorRuntime.mark(function _callee(name, email, password, passwordConfirm) {
-    var res;
+    var res, errorMessage;
     return regeneratorRuntime.wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
@@ -8572,21 +8572,23 @@ function () {
               }, 1500);
             }
 
-            _context.next = 12;
+            _context.next = 14;
             break;
 
           case 8:
             _context.prev = 8;
             _context.t0 = _context["catch"](0);
+            console.log(_context.t0.response);
             document.getElementById('signup-btn').textContent = 'Register';
+            errorMessage = _context.t0.response.data.message;
 
-            if (_context.t0.response.data.message.startsWith('User validation failed')) {
+            if (errorMessage.startsWith('User validation failed') || errorMessage.startsWith('Invalid input data')) {
               (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.');
             } else {
               (0, _alerts.showAlert)('error', 'Error During Registration');
             }
 
-          case 12:
+          case 14:
           case "end":
             return _context.stop();
         }

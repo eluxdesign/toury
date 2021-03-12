@@ -21,7 +21,6 @@ export const signup = async (name, email, password, passwordConfirm) => {
             }, 1500);
         }
     } catch(err) {
-        console.log(err.response);
         document.getElementById('signup-btn').textContent = 'Register';
         const errorMessage = err.response.data.message.toLowerCase();
         if (errorMessage.startsWith('user validation failed') || errorMessage.startsWith('invalid input data')) {

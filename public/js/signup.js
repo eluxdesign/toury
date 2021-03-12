@@ -21,6 +21,7 @@ export const signup = async (name, email, password, passwordConfirm) => {
             }, 1500);
         }
     } catch(err) {
+        console.log(err.response);
         document.getElementById('signup-btn').textContent = 'Register';
         if (err.response.data.message.startsWith('User validation failed')) {
             showAlert('error', 'Passwords are not the same. Please try again.');

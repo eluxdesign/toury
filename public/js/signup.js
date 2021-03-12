@@ -23,10 +23,9 @@ export const signup = async (name, email, password, passwordConfirm) => {
     } catch(err) {
         document.getElementById('signup-btn').textContent = 'Register';
         if (err.response.data.message.startsWith('User validation failed')) {
-            return showAlert('error', 'Passwords are not the same. Please try again.');
-        }
-        if (err.response.data.message.startsWith('E11000')) {
-            return showAlert('error', 'This user already exists. If you forgot your password click "Forgot Password');
+            showAlert('error', 'Passwords are not the same. Please try again.');
+        } else {
+            showAlert('error', 'Error During Registration');
         }
     }
 };

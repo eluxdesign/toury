@@ -8572,7 +8572,7 @@ function () {
               }, 1500);
             }
 
-            _context.next = 15;
+            _context.next = 12;
             break;
 
           case 8:
@@ -8580,22 +8580,13 @@ function () {
             _context.t0 = _context["catch"](0);
             document.getElementById('signup-btn').textContent = 'Register';
 
-            if (!_context.t0.response.data.message.startsWith('User validation failed')) {
-              _context.next = 13;
-              break;
+            if (_context.t0.response.data.message.startsWith('User validation failed')) {
+              (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.');
+            } else {
+              (0, _alerts.showAlert)('error', 'Error During Registration');
             }
 
-            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'Passwords are not the same. Please try again.'));
-
-          case 13:
-            if (!_context.t0.response.data.message.startsWith('E11000')) {
-              _context.next = 15;
-              break;
-            }
-
-            return _context.abrupt("return", (0, _alerts.showAlert)('error', 'This user already exists. If you forgot your password click "Forgot Password'));
-
-          case 15:
+          case 12:
           case "end":
             return _context.stop();
         }
